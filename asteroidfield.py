@@ -3,7 +3,14 @@ from collections.abc import Callable
 
 import pygame
 from asteroid import Asteroid
-from constants import *
+from constants import (
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    ASTEROID_KINDS,
+    ASTEROID_INITIAL_SPAWN_RATE,
+    ASTEROID_MAX_RADIUS,
+    ASTEROID_MIN_RADIUS,
+)
 
 Edge = tuple[pygame.Vector2, Callable[[float], pygame.Vector2]]
 
@@ -46,7 +53,7 @@ class AsteroidField(pygame.sprite.Sprite):
 
     def update(self, dt: float) -> None:
         self.spawn_timer += dt
-        if self.spawn_timer > ASTEROID_SPAWN_RATE_SECONDS:
+        if self.spawn_timer > ASTEROID_INITIAL_SPAWN_RATE:
             self.spawn_timer = 0
 
             # spawn a new asteroid at a random edge
