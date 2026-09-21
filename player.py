@@ -4,9 +4,9 @@ from constants import (
     COLOUR_PLAYER,
     FORWARD_VECTOR,
     PLAYER_INITIAL_SPEED,
-    PLAYER_INITIAL_PROJECTILE_SPEED,
-    PLAYER_INITIAL_PROJECTILE_COUNT,
-    PLAYER_INITIAL_SHOOT_COOLDOWN,
+    INITIAL_PROJECTILE_SPEED,
+    INITIAL_PROJECTILE_COUNT,
+    PLAYER_SHOOT_COOLDOWN,
     LINE_WIDTH,
     MOUSE_BUTTON_1,
     PLAYER_RADIUS,
@@ -23,8 +23,8 @@ class Player(CircleShape):
 
         # Player Variables
         self.speed: float = PLAYER_INITIAL_SPEED
-        self.shoot_speed: float = PLAYER_INITIAL_PROJECTILE_SPEED
-        self.shoot_cooldown: float = PLAYER_INITIAL_SHOOT_COOLDOWN
+        self.shoot_speed: float = INITIAL_PROJECTILE_SPEED
+        self.shoot_cooldown: float = PLAYER_SHOOT_COOLDOWN
     
     def triangle(self) -> list[pygame.Vector2]:
         forward = FORWARD_VECTOR.rotate(self.rotation)

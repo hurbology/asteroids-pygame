@@ -1,6 +1,5 @@
 import pygame
 
-from logger import log_event
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from player import Player
@@ -21,7 +20,7 @@ class Game():
         self.asteroids = pygame.sprite.Group()
         self.shots = pygame.sprite.Group()
 
-        self.configure_sprite_grpups()
+        self.configure_sprite_groups()
 
         screen_width, screen_height = self.screen.get_size()
 
@@ -31,7 +30,7 @@ class Game():
             screen_height / 2,
         )
 
-    def configure_sprite_grpups(self) -> None:
+    def configure_sprite_groups(self) -> None:
         Player.containers = (
             self.updatable, 
             self.drawable,
@@ -75,7 +74,7 @@ class Game():
             for shot in self.shots:
                 if not asteroid.collides_with(shot):
                     continue
-                log_event("asteroid_shot")
+
                 asteroid.split()
                 shot.kill()
                 print("Asteroid Destroyed")
@@ -84,7 +83,6 @@ class Game():
     def handle_player_collisions(self) -> None:
         for asteroid in self.asteroids:
             if self.player.collides_with(asteroid):
-                log_event("player_hit")
                 print("Game Over!")
                 self.running = False
                 return
